@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Pulling...'
                     git branch : 'main',
-                    url : 'https://github.com/abirmekki/DevOps'
+                    url : 'https://github.com/abirmekki/git-test'
             }
         }
         stage ('Maven') {
