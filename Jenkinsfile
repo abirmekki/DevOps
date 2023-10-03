@@ -4,19 +4,19 @@ pipeline {
     stages {
         stage ('Hello') {
             steps {
-                echo 'Hello abir'
+                echo 'Hello Abir'
             }
         }
-        stage ('Hello') {
+        stage ('Git') {
             steps {
                 echo 'Pulling...'
                     git branch : 'main',
-                    url : https://github.com/abirmekki/DevOps'
+                    url : 'https://github.com/abirmekki/DevOps'
             }
         }
-        stage ('Testing Maven') {
+        stage ('Maven') {
             steps {
-                sh "mvn-version"
+                sh "mvn -version"
 
             }
         }
