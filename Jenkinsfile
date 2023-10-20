@@ -8,7 +8,7 @@ pipeline {
                 script {
                 echo 'Pulling...'
                 git branch:'main',
-                url:'https://github.com/Tasnim147/DevopsAchat'
+                url:'https://github.com/abirmekki/DevOps'
                     checkout scm
                 }
             }
