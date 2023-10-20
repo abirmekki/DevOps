@@ -5,13 +5,8 @@ pipeline {
     stages {
         stage('Récupération du code source depuis Git') {
             steps {
-                script {
-                echo 'Pulling...'
-                git branch:'main',
-                url:'https://github.com/abirmekki/DevOps'
-                    checkout scm
+               git 'https://github.com/abirmekki/DevOps'
                 }
-            }
         }
 
         stage('Affichage de la date système') {
