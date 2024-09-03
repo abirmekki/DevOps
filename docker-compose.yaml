@@ -1,0 +1,40 @@
+services:
+  backend:
+    #build: /home/dorra/Bureau/PFE/backend
+    image: 'backend_final:latest'
+    container_name: back
+    ports:
+      - 9092:9092
+    depends_on:
+      - db
+      - frontend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=dorra
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - jenkinsfile_generator_network
+  db:
+    ports:
+      - 5499:5432
+    container_name: postgres_con_3
+    image: 'postgres'
+    environment:
+      - POSTGRES_PASSWORD=dorra
+      - POSTGRES_USER=postgres
+    volumes:
+      - ./initdb/db.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./postgres_data_DB:/var/lib/postgresql/data
+    networks:
+      - jenkinsfile_generator_network
+  frontend:
+    image: 'frontend_final:latest'
+    ports:
+      - 80:80
+    container_name: front
+    networks:
+      - jenkinsfile_generator_network
+networks:
+  jenkinsfile_generator_network:
+    driver: bridge
